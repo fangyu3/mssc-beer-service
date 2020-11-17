@@ -13,15 +13,16 @@ import java.util.UUID;
 @RequestMapping("/api/v1/beer")
 public class BeerController {
 
-    private final BeerService beerService;
-
-    public BeerController(BeerService beerservice) {
-        this.beerService = beerservice;
-    }
+//    private final BeerService beerService;
+//
+//    public BeerController(BeerService beerservice) {
+//        this.beerService = beerservice;
+//    }
 
     @GetMapping("/{beerId}")
     public ResponseEntity<BeerDto> getBeerById(@PathVariable("beerId") UUID beerId) {
-        return new ResponseEntity<>(beerService.getBeerById(beerId), HttpStatus.OK);
+//        return new ResponseEntity<>(beerService.getBeerById(beerId), HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @PostMapping
