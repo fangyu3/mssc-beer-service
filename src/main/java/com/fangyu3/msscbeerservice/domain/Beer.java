@@ -1,6 +1,7 @@
 package com.fangyu3.msscbeerservice.domain;
 
 
+import com.fangyu3.msscbeerservice.web.model.BeerStyleEnum;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.GenericGenerator;
