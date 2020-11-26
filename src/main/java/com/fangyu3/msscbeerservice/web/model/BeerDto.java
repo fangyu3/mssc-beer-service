@@ -23,7 +23,7 @@ public class BeerDto {
     private UUID id;
 
     @Null
-    private int version;
+    private Integer version;
 
     @Null
     private OffsetDateTime createdDate;
@@ -39,10 +39,11 @@ public class BeerDto {
 
     @Positive
     @NotNull
-    private long upc;
+    private Long upc;
 
     @Positive
     @NotNull
-    private double price;
-    private int quantityOnHand;
+    private Double price;
+
+    private Integer quantityOnHand;
 }

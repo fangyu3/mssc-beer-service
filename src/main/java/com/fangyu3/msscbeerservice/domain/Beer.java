@@ -32,7 +32,7 @@ public class Beer {
     // Optimistic locking - no two transactions can override the data at the same time with a conflict
     // thread safe
     @Version
-    private long version;
+    private Long version;
 
     @CreationTimestamp
     @Column(updatable = false)
@@ -46,9 +46,9 @@ public class Beer {
 
     // upc is unique
     @Column(unique = true)
-    private long upc;
-    private double price;
+    private Long upc;
+    private Double price;
 
-    private int minOnHand;
-    private int quantityToBrew;
+    private Integer minOnHand;
+    private Integer quantityToBrew;
 }
