@@ -5,6 +5,7 @@ import com.fangyu3.msscbeerservice.web.model.BeerStyleEnum;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Type;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
@@ -25,6 +26,7 @@ public class Beer {
     @GeneratedValue(generator="UUID")
     // Define the generator 'UUID'
     @GenericGenerator(name="UUID",strategy = "org.hibernate.id.UUIDGenerator")
+    @Type(type="org.hibernate.type.UUIDCharType")
     // Varchar column of length 36
     @Column(length=36, columnDefinition = "varchar", updatable = false, nullable = false)
     private UUID id;
@@ -46,7 +48,7 @@ public class Beer {
 
     // upc is unique
     @Column(unique = true)
-    private Long upc;
+    private String upc;
     private Double price;
 
     private Integer minOnHand;

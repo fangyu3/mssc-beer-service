@@ -1,5 +1,6 @@
 package com.fangyu3.msscbeerservice.web.controller;
 
+import com.fangyu3.msscbeerservice.bootstrap.BeerLoader;
 import com.fangyu3.msscbeerservice.service.BeerService;
 import com.fangyu3.msscbeerservice.web.model.BeerDto;
 import com.fangyu3.msscbeerservice.web.model.BeerStyleEnum;
@@ -16,6 +17,8 @@ import org.springframework.test.web.servlet.MockMvc;
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.BDDMockito.given;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -39,13 +42,15 @@ class BeerControllerTest {
                         .beerName("Galaxy Cat")
                         .beerStyle(BeerStyleEnum.ALE)
                         .price(100.0)
-                        .upc(123123123123L)
+                        .upc(BeerLoader.BEER_1_UPC)
                         .build();
     }
 
 
     @Test
     void getBeerById() throws Exception {
+
+        given(beerService.getBeerById(any())).willReturn(beerDto);
 
         mockMvc.perform(get("/api/v1/beer/" + UUID.randomUUID())
                         .contentType(MediaType.APPLICATION_JSON))
@@ -55,6 +60,8 @@ class BeerControllerTest {
 
     @Test
     void saveNewBeer() throws Exception {
+
+        given(beerService.saveNewBeer(beerDto)).willReturn(beerDto);
 
         String beerDtoJson = objectMapper.writeValueAsString(beerDto);
 
@@ -66,6 +73,8 @@ class BeerControllerTest {
 
     @Test
     void updateBeerById() throws Exception {
+
+        given(beerService.updateBeer(beerDto.getId(),beerDto)).willReturn(beerDto);
 
         String beerDtoJson = objectMapper.writeValueAsString(beerDto);
 

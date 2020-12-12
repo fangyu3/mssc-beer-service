@@ -11,6 +11,10 @@ import org.springframework.stereotype.Component;
 @Component
 public class BeerLoader implements CommandLineRunner {
 
+    public static final String BEER_1_UPC = "0631234200036";
+    public static final String BEER_2_UPC = "0631234300019";
+    public static final String BEER_3_UPC = "0083783375213";
+
     @Autowired
     private BeerRepository beerRepository;
 
@@ -28,16 +32,25 @@ public class BeerLoader implements CommandLineRunner {
                                     .beerStyle("IPA")
                                     .quantityToBrew(200)
                                     .price(10.0)
-                                    .upc(3370100000L)
+                                    .upc(BEER_1_UPC)
                                     .minOnHand(10)
                                     .build());
 
             beerRepository.save(Beer.builder()
                     .beerName("Galaxy Cat")
-                    .beerStyle("Pale_Ale")
+                    .beerStyle("ALE")
                     .quantityToBrew(200)
                     .price(10.0)
-                    .upc(3370100022L)
+                    .upc(BEER_2_UPC)
+                    .minOnHand(10)
+                    .build());
+
+            beerRepository.save(Beer.builder()
+                    .beerName("No Hammers On the Bar")
+                    .beerStyle("ALE")
+                    .quantityToBrew(200)
+                    .price(12.0)
+                    .upc(BEER_3_UPC)
                     .minOnHand(10)
                     .build());
         }
